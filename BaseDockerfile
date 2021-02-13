@@ -1,0 +1,20 @@
+FROM centos
+LABEL "version"="0.1"
+LABEL "Description"="Demo OpenSSH Server"
+EXPOSE "22/tcp"
+
+#INSTALLING STUFF
+RUN	yum install --assumeyes openssh-server openssh-clients shadow-utils vim grep net-tools postgresql-server postgresql python3
+
+# Build ssh keys
+RUN "/usr/bin/ssh-keygen"
+
+#Build home directory
+RUN useradd -m 'demo' -s /bin/bash
+
+#Copy Files
+#COPY / /
+
+
+
+CMD ["/usr/sbin/sshd", "-D"]

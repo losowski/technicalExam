@@ -4,7 +4,7 @@ Built against Redhat/centOS
 
 # Basic facilities
 vim
-sshd
+openssh-server
 
 # Linux / bash
 coreutils

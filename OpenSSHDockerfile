@@ -1,0 +1,19 @@
+FROM centos
+LABEL "version"="0.1"
+LABEL "Description"="CentOS OpenSSH Server"
+EXPOSE "22/tcp"
+
+#INSTALLING STUFF
+RUN	yum install --assumeyes openssh-server openssh-clients
+
+# Modify the config to start the SSH Daemon
+RUN sed -i 's/^HostKey/#HostKey/g' /etc/ssh/sshd_config && mkdir .ssh
+
+# Copy SSH keys
+COPY /ssh /.ssh
+
+# Setup Login for root
+RUN echo 'root:debian' | chpasswd
+
+#CMD ["/usr/sbin/sshd", "-D"]
+CMD ["/sbin/init"]
