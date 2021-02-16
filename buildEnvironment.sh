@@ -2,7 +2,11 @@
 # Script to build a DevOps test environment
 # CentOS
 # Install applications
+<<<<<<< HEAD
+yum install --assumeyes openssh-server openssh-clients shadow-utils vim grep net-tools postgresql python3 git tmux
+=======
 yum install --assumeyes openssh-server openssh-clients shadow-utils vim grep net-tools postgresql python3 git
+>>>>>>> 56c9274934833295244cc38c9d70daaa7d1451c7
 # Create users
 useradd -m 'demo' -s /bin/bash
 echo 'demo:emo123d' | chpasswd
